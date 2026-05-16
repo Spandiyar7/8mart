@@ -1,26 +1,322 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ *
+ * 8MART — design tokens (Tailwind v4 @theme)
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-primary: #d91572;
+  --color-primary-hover: #b80f5e;
+  --color-light-pink: #ffe4ef;
+  --color-deep-rose: #8a123f;
+  --color-graphite: #25262b;
+  --color-soft-graphite: #3a3b40;
+  --color-warm-milk: #fff8f4;
+  --color-leaf-green: #3f6f3a;
+  --color-gold-beige: #d6b98c;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+
+  --shadow-glass:
+    0 1px 0 0 rgba(255, 255, 255, 0.65) inset,
+    0 18px 50px -20px rgba(138, 18, 63, 0.3);
+  --shadow-glow: 0 30px 90px -28px rgba(217, 21, 114, 0.55);
+  --shadow-soft: 0 28px 60px -34px rgba(138, 18, 63, 0.32);
+  --shadow-card: 0 16px 44px -24px rgba(37, 38, 43, 0.32);
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff8f4;
+  --foreground: #25262b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  border-color: rgba(37, 38, 43, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Lenis owns smooth scrolling — keep the native behaviour instant. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+section[id],
+div[id].anchor {
+  scroll-margin-top: 6rem;
+}
+
+::selection {
+  background: #d91572;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Subtle branded scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fff1ea;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#f29ac4, #d91572);
+  border-radius: 999px;
+  border: 2px solid #fff1ea;
+}
+
+/* ------------------------------------------------------------------ *
+ * Surfaces — glassmorphism layers
+ * ------------------------------------------------------------------ */
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.38) 100%
+  );
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-strong {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 248, 244, 0.78) 100%
+  );
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-dark {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 38, 43, 0.62) 0%,
+    rgba(37, 38, 43, 0.32) 100%
+  );
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* ------------------------------------------------------------------ *
+ * Utilities
+ * ------------------------------------------------------------------ */
+.text-balance {
+  text-wrap: balance;
+}
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Raspberry gradient text — used for accent words in titles */
+.text-gradient {
+  background: linear-gradient(120deg, #d91572 0%, #8a123f 55%, #d6b98c 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fine film grain — adds an analog, expensive texture over flat gradients */
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Diagonal light sweep on hover — premium product-card sheen */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.55) 48%,
+    transparent 64%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-shine:hover::after {
+  transform: translateX(130%);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Keyframes + ambient motion (fx- prefix avoids Tailwind collisions)
+ * ------------------------------------------------------------------ */
+@keyframes fx-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fx-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+@keyframes fx-float-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(1.5deg);
+  }
+}
+@keyframes fx-aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.5%, -3%, 0) scale(1.12);
+  }
+}
+@keyframes fx-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fx-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes fx-bloom {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.06) rotate(6deg);
+  }
+}
+@keyframes fx-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes fx-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.07);
+    opacity: 0.82;
+  }
+}
+
+.fx-fade-in {
+  animation: fx-fade-in 0.9s ease both;
+}
+.fx-float {
+  animation: fx-float 7s ease-in-out infinite;
+}
+.fx-float-soft {
+  animation: fx-float-soft 9s ease-in-out infinite;
+}
+.fx-aurora {
+  animation: fx-aurora 18s ease-in-out infinite;
+}
+.fx-spin-slow {
+  animation: fx-spin-slow 40s linear infinite;
+}
+.fx-bloom {
+  animation: fx-bloom 12s ease-in-out infinite;
+}
+.fx-shimmer {
+  background-size: 200% 100%;
+  animation: fx-shimmer 2.4s linear infinite;
+}
+.fx-marquee {
+  animation: fx-marquee 32s linear infinite;
+}
+.fx-pulse {
+  animation: fx-pulse 2.6s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — honour the OS preference everywhere
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Visual-QA still mode — `?motion=off` / `?qa=1` / `?scene=freeze`.
+ * Freezes every CSS animation so the laid-out site can be screenshotted.
+ * ------------------------------------------------------------------ */
+html.motion-off *,
+html.motion-off *::before,
+html.motion-off *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
 }
