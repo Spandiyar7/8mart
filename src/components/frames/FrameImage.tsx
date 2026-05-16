@@ -18,6 +18,27 @@ interface FrameImageProps {
   className?: string;
 }
 
+function getRuntimeBasePath(): string {
+  if (typeof document === "undefined") return "";
+
+  const script = document.querySelector<HTMLScriptElement>(
+    'script[src*="/_next/"]',
+  );
+  const src = script?.getAttribute("src");
+  const marker = "/_next/";
+
+  if (!src?.startsWith("/") || !src.includes(marker)) return "";
+  return src.slice(0, src.indexOf(marker));
+}
+
+function withBasePath(src?: string): string | undefined {
+  const basePath = getRuntimeBasePath();
+  if (!src || !basePath || !src.startsWith("/") || src.startsWith(`${basePath}/`)) {
+    return src;
+  }
+  return `${basePath}${src}`;
+}
+
 /**
  * Renders a real photo with `next/image` when one is available, otherwise
  * a premium generated fallback — so the layout is ready for real photos
@@ -34,11 +55,12 @@ export function FrameImage({
   className,
 }: FrameImageProps) {
   const [failed, setFailed] = useState(false);
+  const resolvedSrc = withBasePath(src);
 
-  if (available && src && !failed) {
+  if (available && resolvedSrc && !failed) {
     return (
       <Image
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         fill
         sizes={sizes}
