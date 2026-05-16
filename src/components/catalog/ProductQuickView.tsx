@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, MessageCircle, ShoppingBag, X } from "lucide-react";
-import { ProductMedia } from "@/components/ui/ProductMedia";
+import { ProductPhotoFrame } from "@/components/frames/ProductPhotoFrame";
 import { Badge } from "@/components/ui/Badge";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice } from "@/lib/formatPrice";
@@ -84,10 +84,15 @@ export function ProductQuickView({
             </button>
 
             <div className="grid sm:grid-cols-2">
-              <ProductMedia
+              <ProductPhotoFrame
                 product={product}
                 rounded="rounded-none"
                 className="aspect-square w-full sm:aspect-auto sm:h-full sm:min-h-[22rem]"
+                tilt={false}
+                reveal={false}
+                petals={false}
+                corner={false}
+                sizes="(max-width: 640px) 100vw, 50vw"
               />
 
               <div className="flex flex-col gap-3 p-6">

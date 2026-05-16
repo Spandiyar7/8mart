@@ -7,6 +7,8 @@ import { ChevronDown, Clock, Flower2, Leaf, Truck } from "lucide-react";
 import { SceneFallback } from "@/components/three/SceneFallback";
 import { HeroContent } from "@/components/hero/HeroContent";
 import { FloatingGlassCard } from "@/components/hero/FloatingGlassCard";
+import { ProductPhotoFrame } from "@/components/frames/ProductPhotoFrame";
+import { products } from "@/data/products";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMediaQuery } from "@/lib/useMediaQuery";
 
@@ -17,6 +19,8 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
 });
 
 const iconClass = "h-[1.05rem] w-[1.05rem]";
+const heroBouquet = products[0];
+const sideBouquet = products[2];
 
 // One-time, cached WebGL capability check.
 let webglSupport: boolean | null = null;
@@ -102,10 +106,38 @@ export function Hero() {
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <HeroContent />
 
+          <div className="relative z-10 mx-auto w-full max-w-[17rem] lg:hidden">
+            <ProductPhotoFrame
+              product={heroBouquet}
+              tilt={false}
+              reveal={false}
+              rounded="rounded-3xl"
+              className="aspect-[4/5] w-full"
+              sizes="80vw"
+            />
+          </div>
+
           {/* Desktop floating cards around the sculpture */}
           <div className="relative hidden h-full min-h-[32rem] lg:block">
+            <div className="absolute right-8 top-1/2 z-10 w-[19rem] -translate-y-1/2 rotate-2">
+              <ProductPhotoFrame
+                product={heroBouquet}
+                rounded="rounded-3xl"
+                className="aspect-[4/5] w-full"
+                sizes="22rem"
+              />
+            </div>
+            <div className="absolute -left-3 bottom-[5%] z-20 w-[12rem] -rotate-6">
+              <ProductPhotoFrame
+                product={sideBouquet}
+                rounded="rounded-2xl"
+                className="aspect-[4/5] w-full"
+                sizes="14rem"
+                corner={false}
+              />
+            </div>
             <FloatingGlassCard
-              className="left-0 top-[8%]"
+              className="left-0 top-[8%] z-30"
               icon={<Leaf className={iconClass} />}
               label="Свежая поставка"
               sublabel="Розы, пионы, тюльпаны"
@@ -114,7 +146,7 @@ export function Hero() {
               floatClassName="fx-float"
             />
             <FloatingGlassCard
-              className="-right-[4%] top-[36%]"
+              className="-right-[4%] top-[36%] z-30"
               icon={<Truck className={iconClass} />}
               label="Доставка сегодня"
               sublabel="За 1,5–3 часа"
@@ -123,7 +155,7 @@ export function Hero() {
               floatClassName="fx-float-soft"
             />
             <FloatingGlassCard
-              className="-left-[6%] bottom-[22%]"
+              className="-left-[6%] bottom-[22%] z-30"
               icon={<Clock className={iconClass} />}
               label="Открыты 24/7"
               sublabel="Принимаем заказы ночью"
@@ -132,7 +164,7 @@ export function Hero() {
               floatClassName="fx-float"
             />
             <FloatingGlassCard
-              className="bottom-[3%] right-[7%]"
+              className="bottom-[3%] right-[7%] z-30"
               icon={<Flower2 className={iconClass} />}
               label="500+ цветов"
               sublabel="Всегда в наличии"

@@ -18,7 +18,10 @@ interface FrameImageProps {
   className?: string;
 }
 
+const configuredBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 function getRuntimeBasePath(): string {
+  if (configuredBasePath) return configuredBasePath;
   if (typeof document === "undefined") return "";
 
   const script = document.querySelector<HTMLScriptElement>(
