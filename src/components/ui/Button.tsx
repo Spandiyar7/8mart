@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 type ButtonVariant = "primary" | "whatsapp" | "ghost" | "dark" | "soft";
@@ -57,6 +58,10 @@ type ButtonAsAnchor = CommonProps &
 
 export type ButtonProps = ButtonAsButton | ButtonAsAnchor;
 
+function isInternalHref(href: string) {
+  return href.startsWith("/") && !href.startsWith("//");
+}
+
 /**
  * Polymorphic CTA button — renders an anchor when `href` is supplied,
  * otherwise a native button. Both are fully keyboard accessible.
@@ -71,8 +76,18 @@ export function Button({
   const classes = cn(base, variants[variant], sizes[size], className);
 
   if ("href" in props && props.href !== undefined) {
+    const anchorProps = props as ButtonAsAnchor;
+
+    if (isInternalHref(anchorProps.href)) {
+      return (
+        <Link className={classes} {...anchorProps}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
-      <a className={classes} {...(props as ButtonAsAnchor)}>
+      <a className={classes} {...anchorProps}>
         {children}
       </a>
     );
