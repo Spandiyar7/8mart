@@ -68,10 +68,10 @@ export default function RootLayout({
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <FlowerPetals />
         <Header />
-        <main className="relative z-10">{children}</main>
+        <main className="relative">{children}</main>
         <Footer />
+        <FlowerPetals />
         <WhatsAppButton />
       </body>
     </html>

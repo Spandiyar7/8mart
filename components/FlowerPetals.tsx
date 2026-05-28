@@ -48,7 +48,7 @@ function makePetal(width: number, height: number, fromTop = false): Petal {
 function drawPetal(ctx: CanvasRenderingContext2D, petal: Petal) {
   const { x, y, z, size, rotation, tilt, hue, saturation, lightness } = petal;
   const scaleX = Math.cos(tilt);
-  const alpha = 0.45 + z * 0.5;
+  const alpha = 0.28 + z * 0.38;
 
   ctx.save();
   ctx.translate(x, y);
@@ -166,7 +166,7 @@ export function FlowerPetals() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[5] h-full w-full"
+      className="pointer-events-none fixed inset-0 z-[35] h-full w-full"
     />
   );
 }

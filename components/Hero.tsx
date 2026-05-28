@@ -1,17 +1,29 @@
 "use client";
 
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Camera, Clock, MessageCircle, Sparkles, Truck } from "lucide-react";
+import { Camera, Clock, Flower2, MessageCircle, Sparkles, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/config/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
-const heroImage =
-  "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1500&q=88";
+const BouquetScene = dynamic(
+  () => import("@/components/BouquetScene").then((mod) => mod.BouquetScene),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <div className="flex flex-col items-center gap-3 text-deepRose">
+          <Flower2 className="size-10 animate-pulse" aria-hidden="true" />
+          <span className="text-sm font-semibold">собираем букет…</span>
+        </div>
+      </div>
+    )
+  }
+);
 
 const badges = [
   { label: "500+ видов цветов", icon: Sparkles },
@@ -104,18 +116,18 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
         >
           <motion.div
-            className="relative aspect-[4/4.55] overflow-hidden rounded-[36px] bg-lightPink shadow-premium sm:aspect-[4/4.25] lg:aspect-[4/4.65]"
+            className="relative aspect-[4/4.55] overflow-hidden rounded-[36px] bg-gradient-to-br from-lightPink via-white to-warmMilk shadow-premium sm:aspect-[4/4.25] lg:aspect-[4/4.65]"
             style={{ y: imageY, scale: imageScale }}
+            aria-label="3D-сцена сборки букета"
+            role="img"
           >
-            <Image
-              src={heroImage}
-              alt="Большой свежий букет цветов FLORÉ с доставкой по Алматы"
-              fill
-              priority
-              sizes="(min-width: 1024px) 48vw, 92vw"
-              className="object-cover"
-            />
+            <div className="absolute inset-0">
+              <BouquetScene />
+            </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-white/5" />
+            <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/85 px-4 py-1.5 text-xs font-semibold text-deepRose shadow-sm backdrop-blur">
+              3D · собираем букет в реальном времени
+            </div>
           </motion.div>
 
           <motion.div
