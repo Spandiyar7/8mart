@@ -18,6 +18,7 @@ import { DeliverySection } from "@/components/DeliverySection";
 import { Hero } from "@/components/Hero";
 import { InstagramGrid } from "@/components/InstagramGrid";
 import { ProductCard } from "@/components/ProductCard";
+import { Reveal } from "@/components/Reveal";
 import { Reviews } from "@/components/Reviews";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,7 @@ export default function HomePage() {
       <Hero />
 
       <section className="bg-white py-16 sm:py-24">
-        <div className="container-page">
+        <Reveal className="container-page">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionTitle
               eyebrow="категории"
@@ -104,11 +105,11 @@ export default function HomePage() {
           <div className="mt-10">
             <CategoryGrid />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-warmMilk py-16 sm:py-24">
-        <div className="container-page">
+        <Reveal className="container-page">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <SectionTitle
               eyebrow="хиты продаж"
@@ -124,25 +125,27 @@ export default function HomePage() {
               <ProductCard key={product.id} product={product} compact />
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-white py-16 sm:py-24">
-        <div className="container-page">
+        <Reveal className="container-page">
           <SectionTitle
             eyebrow="почему FLORÉ"
             title="Красиво, быстро и без переплаты за лишнюю витрину"
             description="Сайт держит премиальное ощущение, но УТП остается коммерчески сильным: большой склад, свежие цветы и понятный заказ через WhatsApp."
           />
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {whyItems.map((item) => {
+            {whyItems.map((item, index) => {
               const Icon = item.icon;
               return (
-                <article
+                <Reveal
                   key={item.title}
-                  className="rounded-[28px] border border-graphite/10 bg-white p-6 shadow-soft"
+                  as="article"
+                  delay={index * 0.06}
+                  className="group rounded-[28px] border border-graphite/10 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-premium"
                 >
-                  <div className="flex size-12 items-center justify-center rounded-full bg-lightPink text-deepRose">
+                  <div className="flex size-12 items-center justify-center rounded-full bg-lightPink text-deepRose transition-transform duration-300 group-hover:scale-110">
                     <Icon className="size-6" aria-hidden="true" />
                   </div>
                   <h3 className="mt-5 text-xl font-semibold text-graphite">
@@ -151,15 +154,15 @@ export default function HomePage() {
                   <p className="mt-3 text-sm leading-6 text-softGraphite">
                     {item.text}
                   </p>
-                </article>
+                </Reveal>
               );
             })}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-warmMilk py-16 sm:py-24">
-        <div className="container-page">
+        <Reveal className="container-page">
           <SectionTitle
             eyebrow="как заказать"
             title="От выбора до доставки — четыре простых шага"
@@ -167,18 +170,23 @@ export default function HomePage() {
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-4">
             {orderSteps.map((step, index) => (
-              <article key={step.title} className="relative rounded-[28px] bg-white p-6 shadow-soft">
-                <span className="flex size-12 items-center justify-center rounded-full bg-primary text-lg font-bold text-white">
+              <Reveal
+                key={step.title}
+                as="article"
+                delay={index * 0.08}
+                className="relative rounded-[28px] bg-white p-6 shadow-soft transition-shadow duration-300 hover:shadow-premium"
+              >
+                <span className="flex size-12 items-center justify-center rounded-full bg-gradient-to-br from-primary to-deepRose text-lg font-bold text-white shadow-md">
                   {index + 1}
                 </span>
                 <h3 className="mt-5 text-xl font-semibold text-graphite">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-softGraphite">{step.text}</p>
-              </article>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-white py-16 sm:py-24">
@@ -192,8 +200,10 @@ export default function HomePage() {
       <InstagramGrid />
 
       <section className="bg-white py-16 sm:py-24">
-        <div className="container-page">
-          <div className="overflow-hidden rounded-[36px] bg-primary p-6 text-white shadow-premium sm:p-10 lg:p-14">
+        <Reveal className="container-page">
+          <div className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-primary via-deepRose to-primary p-6 text-white shadow-premium sm:p-10 lg:p-14">
+            <div className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 size-72 rounded-full bg-goldBeige/30 blur-3xl" aria-hidden="true" />
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <div className="flex flex-wrap gap-3">
@@ -233,7 +243,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

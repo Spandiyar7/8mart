@@ -11,6 +11,7 @@ import {
   SheetTrigger
 } from "@/components/ui/sheet";
 import { CartDrawer } from "@/components/CartDrawer";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import { useCartStore } from "@/lib/cart-store";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -22,15 +23,17 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-graphite/10 bg-white/88 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-graphite/10 bg-white/75 backdrop-blur-xl supports-[backdrop-filter]:bg-white/65">
+        <ScrollProgress />
         <div className="container-page flex h-[var(--header-height)] items-center justify-between gap-4">
           <Link
             href="/"
             className="flex items-center gap-3"
             aria-label="FLORÉ, на главную"
           >
-            <span className="flex size-11 items-center justify-center rounded-2xl bg-primary text-xl font-black text-white shadow-sm">
-              F
+            <span className="relative flex size-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-deepRose to-primary text-xl font-black text-white shadow-md transition-transform duration-300 group-hover:scale-105">
+              <span className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent" aria-hidden="true" />
+              <span className="relative">F</span>
             </span>
             <span className="leading-tight">
               <span className="block text-lg font-black tracking-normal text-graphite">

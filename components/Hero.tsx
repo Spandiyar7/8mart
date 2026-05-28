@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Camera, Clock, MessageCircle, Sparkles, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,18 @@ const badges = [
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", reduceMotion ? "0%" : "-30%"]);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, reduceMotion ? 1 : 1.08]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", reduceMotion ? "0%" : "20%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.85], [1, reduceMotion ? 1 : 0.2]);
+  const floatALeft = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -40]);
+  const floatBRight = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 50]);
+
   const motionProps = reduceMotion
     ? {}
     : {
@@ -33,9 +46,14 @@ export function Hero() {
     "Здравствуйте! Хочу заказать букет с доставкой по Алматы. Помогите выбрать вариант.";
 
   return (
-    <section className="relative overflow-hidden bg-warmMilk">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden bg-gradient-to-br from-warmMilk via-lightPink/40 to-warmMilk"
+    >
+      <div className="pointer-events-none absolute -left-32 top-20 size-[420px] rounded-full bg-primary/15 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-24 bottom-10 size-[380px] rounded-full bg-goldBeige/30 blur-3xl" aria-hidden="true" />
       <div className="container-page grid min-h-[calc(100vh-var(--header-height))] items-center gap-10 py-10 lg:grid-cols-[1.02fr_0.98fr] lg:py-14">
-        <motion.div {...motionProps}>
+        <motion.div {...motionProps} style={{ y: textY, opacity: textOpacity }}>
           <Badge tone="green" className="mb-5">
             Самый крупный цветочный склад в Алматы
           </Badge>
@@ -85,7 +103,10 @@ export function Hero() {
           animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
         >
-          <div className="relative aspect-[4/4.55] overflow-hidden rounded-[36px] bg-lightPink shadow-premium sm:aspect-[4/4.25] lg:aspect-[4/4.65]">
+          <motion.div
+            className="relative aspect-[4/4.55] overflow-hidden rounded-[36px] bg-lightPink shadow-premium sm:aspect-[4/4.25] lg:aspect-[4/4.65]"
+            style={{ y: imageY, scale: imageScale }}
+          >
             <Image
               src={heroImage}
               alt="Большой свежий букет цветов FLORÉ с доставкой по Алматы"
@@ -94,19 +115,26 @@ export function Hero() {
               sizes="(min-width: 1024px) 48vw, 92vw"
               className="object-cover"
             />
-          </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-white/5" />
+          </motion.div>
 
-          <div className="absolute -left-2 top-8 rounded-[24px] bg-white/92 p-4 shadow-premium backdrop-blur sm:-left-7">
+          <motion.div
+            className="absolute -left-2 top-8 rounded-[24px] bg-white/92 p-4 shadow-premium backdrop-blur sm:-left-7"
+            style={{ x: floatALeft }}
+          >
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-softGraphite/55">
               розы
             </p>
             <p className="mt-1 text-lg font-bold text-primary">от 450 ₸</p>
-          </div>
+          </motion.div>
 
-          <div className="absolute -right-2 bottom-24 rounded-[24px] bg-white/92 p-4 shadow-premium backdrop-blur sm:-right-5">
+          <motion.div
+            className="absolute -right-2 bottom-24 rounded-[24px] bg-white/92 p-4 shadow-premium backdrop-blur sm:-right-5"
+            style={{ x: floatBRight }}
+          >
             <p className="text-sm font-semibold text-graphite">свежая поставка</p>
             <p className="mt-1 text-xs text-softGraphite">каждый день</p>
-          </div>
+          </motion.div>
 
           <div className="absolute bottom-4 left-5 right-5 rounded-[28px] bg-graphite/88 p-5 text-white shadow-premium backdrop-blur">
             <p className="text-sm text-white/70">соберём сегодня</p>
