@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductFilters, type FilterState } from "@/components/ProductFilters";
+import { categoryLabels } from "@/data/products";
 import type { Product, ProductCategory } from "@/types/product";
 
 const defaultFilters: FilterState = {
@@ -25,7 +27,6 @@ const defaultFilters: FilterState = {
 
 type ProductGridProps = {
   products: Product[];
-  initialCategory?: ProductCategory;
 };
 
 function unique(values: string[]) {
@@ -54,13 +55,26 @@ function ProductSkeleton() {
   );
 }
 
-export function ProductGrid({ products, initialCategory }: ProductGridProps) {
+export function ProductGrid({ products }: ProductGridProps) {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  const initialCategory: ProductCategory | undefined =
+    categoryParam && categoryParam in categoryLabels
+      ? (categoryParam as ProductCategory)
+      : undefined;
+
   const [filters, setFilters] = useState<FilterState>({
     ...defaultFilters,
     category: initialCategory ?? "all"
   });
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (initialCategory) {
+      setFilters((current) => ({ ...current, category: initialCategory }));
+    }
+  }, [initialCategory]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIsLoading(false), 220);

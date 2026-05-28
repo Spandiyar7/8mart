@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ProductGrid } from "@/components/ProductGrid";
 import { SectionTitle } from "@/components/SectionTitle";
-import { categoryLabels, products } from "@/data/products";
-import type { ProductCategory } from "@/types/product";
+import { products } from "@/data/products";
 
 export const metadata: Metadata = {
   title: "Каталог букетов и цветов",
@@ -10,19 +10,7 @@ export const metadata: Metadata = {
     "Каталог букетов FLORÉ: розы, сборные букеты, монобукеты, корзины, коробки и подарки с доставкой по Алматы."
 };
 
-type CatalogPageProps = {
-  searchParams: Promise<{
-    category?: string;
-  }>;
-};
-
-export default async function CatalogPage({ searchParams }: CatalogPageProps) {
-  const params = await searchParams;
-  const category =
-    params.category && params.category in categoryLabels
-      ? (params.category as ProductCategory)
-      : undefined;
-
+export default function CatalogPage() {
   return (
     <section className="bg-warmMilk py-10 sm:py-14">
       <div className="container-page">
@@ -33,7 +21,9 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
             description="Фильтруйте по категории, цене, цвету, поводу и типу цветов. На мобильном фильтры открываются удобным нижним листом."
           />
         </div>
-        <ProductGrid products={products} initialCategory={category} />
+        <Suspense fallback={null}>
+          <ProductGrid products={products} />
+        </Suspense>
       </div>
     </section>
   );
