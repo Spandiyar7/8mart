@@ -22,7 +22,7 @@ export function CategoryGrid() {
             <div className="relative aspect-[4/2.7] overflow-hidden bg-warmMilk">
               <Image
                 src={category.image}
-                alt={`${category.name} 8MART`}
+                alt={`${category.name} FLORÉ`}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 92vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

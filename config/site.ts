@@ -1,15 +1,15 @@
 export const siteConfig = {
-  brandName: "8MART",
-  city: "Костанай",
-  address: "ул. Тәуелсіздік, 37",
-  phone: "+7 777 478 48 22",
-  whatsapp: "77774784822",
-  instagram: "https://www.instagram.com/8mart_kostanay",
+  brandName: "FLORÉ",
+  city: "Алматы",
+  address: "пр. Достык, 89",
+  phone: "+7 707 555 12 34",
+  whatsapp: "77075551234",
+  instagram: "https://www.instagram.com/flore.almaty",
   workingHours: "24/7",
   deliveryTime: "1,5–3 часа",
-  deliveryPriceFrom: "от 3000 ₸",
-  siteUrl: "https://8mart.kz",
-  email: "hello@8mart.kz"
+  deliveryPriceFrom: "от 2500 ₸",
+  siteUrl: "https://flore.kz",
+  email: "hello@flore.kz"
 };
 
 export const navigation = [

@@ -21,7 +21,7 @@ export function InstagramGrid() {
           <SectionTitle
             eyebrow="Instagram"
             title="Больше живых букетов и свежих поставок"
-            description="Сетка-заглушка: фото можно заменить реальными публикациями 8MART после подключения Instagram."
+            description="Сетка-заглушка: фото можно заменить реальными публикациями FLORÉ после подключения Instagram."
           />
           <Button asChild variant="outline" className="w-fit">
             <a href={siteConfig.instagram} target="_blank" rel="noreferrer">
@@ -39,11 +39,11 @@ export function InstagramGrid() {
               target="_blank"
               rel="noreferrer"
               className="group relative aspect-square overflow-hidden rounded-[24px] bg-white shadow-sm"
-              aria-label={`Открыть Instagram 8MART, пример фото ${index + 1}`}
+              aria-label={`Открыть Instagram FLORÉ, пример фото ${index + 1}`}
             >
               <Image
                 src={image}
-                alt={`Пример Instagram-фото букета 8MART ${index + 1}`}
+                alt={`Пример Instagram-фото букета FLORÉ ${index + 1}`}
                 fill
                 sizes="(min-width: 1024px) 16vw, (min-width: 768px) 33vw, 50vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

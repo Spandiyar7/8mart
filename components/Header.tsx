@@ -18,7 +18,7 @@ export function Header() {
   const count = useCartStore((state) => state.count());
   const openCart = useCartStore((state) => state.openCart);
   const whatsappMessage =
-    "Здравствуйте! Хочу заказать цветы в 8MART. Помогите подобрать букет.";
+    "Здравствуйте! Хочу заказать цветы в FLORÉ. Помогите подобрать букет.";
 
   return (
     <>
@@ -27,10 +27,10 @@ export function Header() {
           <Link
             href="/"
             className="flex items-center gap-3"
-            aria-label="8MART, на главную"
+            aria-label="FLORÉ, на главную"
           >
             <span className="flex size-11 items-center justify-center rounded-2xl bg-primary text-xl font-black text-white shadow-sm">
-              8
+              F
             </span>
             <span className="leading-tight">
               <span className="block text-lg font-black tracking-normal text-graphite">

@@ -10,7 +10,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "О магазине",
   description:
-    "8MART — цветочный склад и доставка цветов в Костанае. Большой выбор, свежие поставки, WhatsApp-заказ 24/7."
+    "FLORÉ — цветочный склад и доставка цветов в Алматы. Большой выбор, свежие поставки, WhatsApp-заказ 24/7."
 };
 
 const stats = [
@@ -24,7 +24,7 @@ const values = [
   {
     icon: Flower2,
     title: "Выбор как на складе",
-    text: "Сильная сторона 8MART — большой ассортимент цветов, упаковки и готовых решений."
+    text: "Сильная сторона FLORÉ — большой ассортимент цветов, упаковки и готовых решений."
   },
   {
     icon: Sparkles,
@@ -53,9 +53,9 @@ export default function AboutPage() {
         <div className="container-page grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <SectionTitle
-              eyebrow="о 8MART"
+              eyebrow="о FLORÉ"
               title="Большой цветочный склад с сервисом современного онлайн-магазина"
-              description="8MART помогает быстро заказать свежие цветы в Костанае: от одной розы до крупной композиции для важного события."
+              description="FLORÉ помогает быстро заказать свежие цветы в Алматы: от одной розы до крупной композиции для важного события."
             />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -72,7 +72,7 @@ export default function AboutPage() {
           <div className="relative aspect-[4/3.2] overflow-hidden rounded-[36px] bg-white shadow-premium">
             <Image
               src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=85"
-              alt="Свежие цветы на складе 8MART в Костанае"
+              alt="Свежие цветы на складе FLORÉ в Алматы"
               fill
               sizes="(min-width: 1024px) 50vw, 92vw"
               className="object-cover"
@@ -94,7 +94,7 @@ export default function AboutPage() {
 
           <div className="mt-14 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <SectionTitle
-              title="Что важно в работе 8MART"
+              title="Что важно в работе FLORÉ"
               description="Складской формат даёт выбор и цену, а флористический сервис делает заказ красивым и спокойным."
             />
             <div className="grid gap-4 sm:grid-cols-2">

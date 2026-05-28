@@ -7,7 +7,7 @@ import type { ProductCategory } from "@/types/product";
 export const metadata: Metadata = {
   title: "Каталог букетов и цветов",
   description:
-    "Каталог букетов 8MART: розы, сборные букеты, монобукеты, корзины, коробки и подарки с доставкой по Костанаю."
+    "Каталог букетов FLORÉ: розы, сборные букеты, монобукеты, корзины, коробки и подарки с доставкой по Алматы."
 };
 
 type CatalogPageProps = {
@@ -29,7 +29,7 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
         <div className="mb-8">
           <SectionTitle
             eyebrow="каталог"
-            title="Букеты, розы и композиции с доставкой по Костанаю"
+            title="Букеты, розы и композиции с доставкой по Алматы"
             description="Фильтруйте по категории, цене, цвету, поводу и типу цветов. На мобильном фильтры открываются удобным нижним листом."
           />
         </div>

@@ -9,13 +9,13 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Доставка и оплата",
   description:
-    "Условия доставки цветов 8MART по Костанаю: доставка 1,5–3 часа, самовывоз, оплата после согласования заказа."
+    "Условия доставки цветов FLORÉ по Алматы: доставка 1,5–3 часа, самовывоз, оплата после согласования заказа."
 };
 
 const rules = [
   {
     icon: Truck,
-    title: "Доставка по Костанаю",
+    title: "Доставка по Алматы",
     text: `Среднее время — ${siteConfig.deliveryTime}. Точное время зависит от адреса и загрузки курьеров.`
   },
   {
@@ -36,7 +36,7 @@ const rules = [
 ];
 
 export default function DeliveryPage() {
-  const message = "Здравствуйте! Хочу уточнить доставку цветов по Костанаю.";
+  const message = "Здравствуйте! Хочу уточнить доставку цветов по Алматы.";
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function DeliveryPage() {
           <div>
             <SectionTitle
               eyebrow="доставка и оплата"
-              title="Доставляем букеты по Костанаю каждый день"
+              title="Доставляем букеты по Алматы каждый день"
               description="Соберём букет, пришлём фото перед доставкой и передадим получателю через курьера."
             />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

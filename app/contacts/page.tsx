@@ -9,7 +9,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Контакты",
   description:
-    "Контакты 8MART в Костанае: WhatsApp, телефон, Instagram, адрес склада и режим работы 24/7."
+    "Контакты FLORÉ в Алматы: WhatsApp, телефон, Instagram, адрес склада и режим работы 24/7."
 };
 
 const contacts = [
@@ -23,12 +23,12 @@ const contacts = [
     icon: MessageCircle,
     title: "WhatsApp",
     value: "Написать флористу",
-    href: getWhatsAppUrl("Здравствуйте! Хочу заказать цветы в 8MART.")
+    href: getWhatsAppUrl("Здравствуйте! Хочу заказать цветы в FLORÉ.")
   },
   {
     icon: Instagram,
     title: "Instagram",
-    value: "@8mart_kostanay",
+    value: "@flore.almaty",
     href: siteConfig.instagram
   },
   {
@@ -47,7 +47,7 @@ const contacts = [
 
 export default function ContactsPage() {
   const message =
-    "Здравствуйте! Хочу заказать букет в 8MART. Подскажите, пожалуйста, что есть в наличии сегодня?";
+    "Здравствуйте! Хочу заказать букет в FLORÉ. Подскажите, пожалуйста, что есть в наличии сегодня?";
 
   return (
     <>

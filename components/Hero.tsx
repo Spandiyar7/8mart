@@ -30,17 +30,17 @@ export function Hero() {
       };
 
   const whatsappMessage =
-    "Здравствуйте! Хочу заказать букет с доставкой по Костанаю. Помогите выбрать вариант.";
+    "Здравствуйте! Хочу заказать букет с доставкой по Алматы. Помогите выбрать вариант.";
 
   return (
     <section className="relative overflow-hidden bg-warmMilk">
       <div className="container-page grid min-h-[calc(100vh-var(--header-height))] items-center gap-10 py-10 lg:grid-cols-[1.02fr_0.98fr] lg:py-14">
         <motion.div {...motionProps}>
           <Badge tone="green" className="mb-5">
-            Самый крупный цветочный склад в Костанае
+            Самый крупный цветочный склад в Алматы
           </Badge>
           <h1 className="text-balance text-4xl font-semibold tracking-normal text-graphite sm:text-6xl lg:text-7xl">
-            Свежие цветы с доставкой по Костанаю
+            Свежие цветы с доставкой по Алматы
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-softGraphite sm:text-xl">
             {siteConfig.brandName} — цветочный склад с большим выбором букетов,
@@ -88,7 +88,7 @@ export function Hero() {
           <div className="relative aspect-[4/4.55] overflow-hidden rounded-[36px] bg-lightPink shadow-premium sm:aspect-[4/4.25] lg:aspect-[4/4.65]">
             <Image
               src={heroImage}
-              alt="Большой свежий букет цветов 8MART с доставкой по Костанаю"
+              alt="Большой свежий букет цветов FLORÉ с доставкой по Алматы"
               fill
               priority
               sizes="(min-width: 1024px) 48vw, 92vw"

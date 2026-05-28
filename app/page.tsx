@@ -44,7 +44,7 @@ const whyItems = [
   {
     icon: Truck,
     title: "Быстрая доставка",
-    text: `В среднем ${siteConfig.deliveryTime} по Костанаю, можно выбрать удобный интервал.`
+    text: `В среднем ${siteConfig.deliveryTime} по Алматы, можно выбрать удобный интервал.`
   },
   {
     icon: MessageCircle,
@@ -130,7 +130,7 @@ export default function HomePage() {
       <section className="bg-white py-16 sm:py-24">
         <div className="container-page">
           <SectionTitle
-            eyebrow="почему 8MART"
+            eyebrow="почему FLORÉ"
             title="Красиво, быстро и без переплаты за лишнюю витрину"
             description="Сайт держит премиальное ощущение, но УТП остается коммерчески сильным: большой склад, свежие цветы и понятный заказ через WhatsApp."
           />
@@ -211,7 +211,7 @@ export default function HomePage() {
                 </h2>
                 <p className="mt-4 max-w-2xl text-lg leading-8 text-white/82">
                   Напишите нам — флорист подберёт вариант под бюджет и повод,
-                  покажет фото и оформит доставку по Костанаю.
+                  покажет фото и оформит доставку по Алматы.
                 </p>
               </div>
               <div className="grid gap-3 sm:grid-cols-3 lg:w-[520px]">

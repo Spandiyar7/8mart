@@ -54,7 +54,7 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
             <div className="relative aspect-[4/4.25] overflow-hidden rounded-[36px] bg-white shadow-premium">
               <Image
                 src={selectedImage}
-                alt={`${product.name} - фото букета 8MART`}
+                alt={`${product.name} - фото букета FLORÉ`}
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 92vw"
@@ -217,7 +217,7 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
                 <div>
                   <h2 className="font-semibold text-graphite">Доставка сегодня</h2>
                   <p className="mt-1 text-sm leading-6 text-softGraphite">
-                    По Костанаю в среднем {siteConfig.deliveryTime}, доставка {siteConfig.deliveryPriceFrom}.
+                    По Алматы в среднем {siteConfig.deliveryTime}, доставка {siteConfig.deliveryPriceFrom}.
                   </p>
                 </div>
               </div>

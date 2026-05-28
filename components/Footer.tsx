@@ -6,7 +6,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 export function Footer() {
   const whatsappMessage =
-    "Здравствуйте! Хочу заказать цветы в 8MART. Подскажите, пожалуйста, что есть в наличии сегодня?";
+    "Здравствуйте! Хочу заказать цветы в FLORÉ. Подскажите, пожалуйста, что есть в наличии сегодня?";
 
   return (
     <footer className="border-t border-graphite/10 bg-graphite text-white">
@@ -15,15 +15,15 @@ export function Footer() {
           <Link
             href="/"
             className="inline-flex items-center gap-3 text-2xl font-bold tracking-normal"
-            aria-label="8MART, на главную"
+            aria-label="FLORÉ, на главную"
           >
             <span className="flex size-12 items-center justify-center rounded-2xl bg-primary text-white">
-              8
+              F
             </span>
             <span>{siteConfig.brandName}</span>
           </Link>
           <p className="mt-5 max-w-md text-sm leading-6 text-white/72">
-            Цветочный склад и доставка букетов в Костанае. Большой выбор цветов,
+            Цветочный склад и доставка букетов в Алматы. Большой выбор цветов,
             свежие поставки, сборка под повод и бюджет, заказ через WhatsApp.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -78,7 +78,7 @@ export function Footer() {
             <p className="flex gap-3">
               <Instagram className="mt-0.5 size-4 shrink-0 text-goldBeige" aria-hidden="true" />
               <a href={siteConfig.instagram} target="_blank" rel="noreferrer">
-                Instagram 8MART
+                Instagram FLORÉ
               </a>
             </p>
           </div>
@@ -86,7 +86,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10 py-5">
         <div className="container-page flex flex-col gap-2 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {siteConfig.brandName}. Доставка цветов в Костанае.</p>
+          <p>© {new Date().getFullYear()} {siteConfig.brandName}. Доставка цветов в {siteConfig.city}.</p>
           <p>Онлайн-оплата будет добавлена позже.</p>
         </div>
       </div>

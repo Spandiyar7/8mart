@@ -9,24 +9,24 @@ import { buildLocalBusinessJsonLd } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "8MART — доставка цветов в Костанае | Свежие букеты 24/7",
-    template: "%s | 8MART"
+    default: "FLORÉ — доставка цветов в Алматы | Свежие букеты 24/7",
+    template: "%s | FLORÉ"
   },
   description:
-    "Закажите свежие цветы и букеты в 8MART. Большой цветочный склад в Костанае, доставка 1,5–3 часа, заказ через WhatsApp.",
+    "Закажите свежие цветы и букеты в FLORÉ. Большой цветочный склад в Алматы, доставка 1,5–3 часа, заказ через WhatsApp.",
   keywords: [
-    "доставка цветов Костанай",
-    "букеты Костанай",
-    "8MART",
+    "доставка цветов Алматы",
+    "букеты Алматы",
+    "FLORÉ",
     "цветочный склад",
-    "купить розы Костанай"
+    "купить розы Алматы"
   ],
   openGraph: {
-    title: "8MART — доставка цветов в Костанае",
+    title: "FLORÉ — доставка цветов в Алматы",
     description:
-      "Большой цветочный склад в Костанае, свежие букеты 24/7, доставка 1,5–3 часа.",
+      "Большой цветочный склад в Алматы, свежие букеты 24/7, доставка 1,5–3 часа.",
     url: siteConfig.siteUrl,
-    siteName: "8MART",
+    siteName: "FLORÉ",
     locale: "ru_KZ",
     type: "website",
     images: [
@@ -34,15 +34,15 @@ export const metadata: Metadata = {
         url: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1200&q=85",
         width: 1200,
         height: 630,
-        alt: "8MART доставка цветов в Костанае"
+        alt: "FLORÉ доставка цветов в Алматы"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "8MART — доставка цветов в Костанае",
+    title: "FLORÉ — доставка цветов в Алматы",
     description:
-      "Свежие букеты, розы и композиции с доставкой по Костанаю за 1,5–3 часа."
+      "Свежие букеты, розы и композиции с доставкой по Алматы за 1,5–3 часа."
   }
 };
 

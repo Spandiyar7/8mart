@@ -156,7 +156,7 @@ export function CartDrawer() {
           <div className="mt-7 rounded-[28px] bg-warmMilk p-5">
             <div className="flex items-center gap-2 text-sm font-semibold text-graphite">
               <MapPin className="size-4 text-leafGreen" aria-hidden="true" />
-              Доставка по Костанаю
+              Доставка по Алматы
             </div>
             <p className="mt-2 text-sm leading-6 text-softGraphite">
               Среднее время доставки {siteConfig.deliveryTime}. Курьерская доставка {siteConfig.deliveryPriceFrom}.

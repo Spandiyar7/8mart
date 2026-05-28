@@ -5,7 +5,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 const deliveryItems = [
   {
     icon: Truck,
-    title: "Доставка по Костанаю",
+    title: "Доставка по Алматы",
     text: `Среднее время доставки ${siteConfig.deliveryTime}`
   },
   {

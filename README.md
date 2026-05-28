@@ -1,6 +1,6 @@
-# 8MART Flowers
+# FLORÉ Flowers
 
-Production-ready демо-сайт цветочного магазина 8MART в Костанае на Next.js 15, React, TypeScript и Tailwind CSS.
+Production-ready демо-сайт цветочного магазина FLORÉ в Алматы на Next.js 15, React, TypeScript и Tailwind CSS.
 
 ## Запуск
 

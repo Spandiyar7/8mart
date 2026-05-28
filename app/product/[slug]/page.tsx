@@ -29,13 +29,13 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${product.name} — заказать в Костанае`,
-    description: `${product.description} Доставка цветов 8MART по Костанаю за 1,5–3 часа.`,
+    title: `${product.name} — заказать в Алматы`,
+    description: `${product.description} Доставка цветов FLORÉ по Алматы за 1,5–3 часа.`,
     alternates: {
       canonical: `/product/${product.slug}`
     },
     openGraph: {
-      title: `${product.name} — 8MART`,
+      title: `${product.name} — FLORÉ`,
       description: product.description,
       images: [
         {
